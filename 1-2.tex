@@ -1,0 +1,411 @@
+\documentclass{article}
+\usepackage{notes}
+
+\begin{document}
+
+\markright{Author: Silas Mitchell} % first page mark
+
+\section{Chapter 1}
+\subsection{Preliminaries}
+
+This course assumes familiarity with basic arithmetic and algebraic operations.
+
+There are several number systems that will be of interest throughout the course.
+\begin{definition}{(Number systems)}{def:number_systems}
+    \begin{itemize}
+        \item Natural numbers: $\N=\{1,2,3,4,...\}$
+        \item ``Whole" numbers: $W=\N\cup\{0\}=\{0,1,2,3,4,....\}$
+        \item Integers: $\Z=\{...,-3,-2,-1,0,1,2,3,...\}$
+        \item Rational numbers: $\Q=\left\{\frac{a}{b}:a,b\in\Z,b\neq0\right\}$
+        \item Real numbers: informally, any number that can be expressed as a decimal. Denoted $\R$
+        \item Irrational numbers: any real number which is not also a rational number
+    \end{itemize}
+\end{definition}
+
+The book's terminology of ``whole numbers" is not standard, and conventions vary as to whether the natural numbers should start at 0 or at 1. Therefore, I will refer to the positive integers $\{1,2,3,...\}$ and the nonnegative integers $\{0,1,2,3,...\}$ instead.
+
+\subsection{Visualizing and graphing data}
+\subsubsection{One-variable data}
+
+One variable data comes in the form of a list of numbers.
+
+Given a set of one-variable data, we may represent it visually on a number line, or find various properties of the data. 
+
+\begin{definition}{(Size-related properties of data)}{def:mim_max_range}
+    \begin{itemize}
+        \item Minimum: smallest value in the data set
+        \item Maximum: largest value in the data set
+        \item Range: difference between the minimum and maximum
+    \end{itemize}
+\end{definition}
+
+\begin{definition}{(Mode)}{def:mode}
+    The value that appears most frequently in the data set. (This value is not strictly unique, since we could have multiple values appear at the same frequency.)
+\end{definition}
+
+\begin{definition}{(Mean)}{def:mean}
+    Also known as average. To take the average of $n$ numbers, add them all and then divide this total by $n$.
+\end{definition}
+
+\begin{definition}{(Median)}{def:median}
+    Sort the list of data from smallest to largest. If there is an odd number of data points, then the mode is the middle one. Otherwise, take the average of the middle two.
+\end{definition}
+
+\begin{example}{(Textbook 1.2 ex 1)}{ex:1.2.1}
+    The following table lists the low temperature, $T$, in degrees Fahrenheit that occured in Minneapolis, Minnesota for 6 consecutive nights:
+    \begin{center} \tagpdfsetup{table/header-columns={1}}
+    \begin{tabular}{|c|c|c|c|c|c|c|}\hline
+        $T$ & $-12$ & $-4$ & $-8$ & $21$ & $18$ & $9$ \\ \hline
+    \end{tabular}\end{center}
+    \begin{enumerate}
+        \item[(a)] Plot these temperatures on a number line.
+        \item[(b)] Find the maximum and minimum of these temperatures.
+        \item[(c)] Determine the mean of these six temperatures.
+        \item[(d)] Find the median and interpret the result.
+    \end{enumerate}
+\end{example}
+\begin{solution}
+	\begin{enumerate}
+        \item[(a)] $\quad$\\
+        \begin{tikzpicture}[scale=.39,alt={number line with temperature data plotted}]
+            \draw[<->, very thick] (-13.5,0) -- (22.5,0);
+            \foreach \x in {-13,-8,...,22} {do
+                \draw (\x,.2) -- (\x,-.2) node[anchor=north] {$\x$};
+            }
+            \filldraw (-12,0) circle (5pt);
+            \filldraw (-4,0) circle (5pt);
+            \filldraw (-8,0) circle (5pt);
+            \filldraw (21,0) circle (5pt);
+            \filldraw (18,0) circle (5pt);
+            \filldraw (9,0) circle (5pt);
+        \end{tikzpicture}
+        \item[(b)] Maximum: 21\\ Minimum: -12
+        \item[(c)] Mean: \[\frac{(-12)+(-4)+(-8)+21+18+9}{6}=\frac{24}{6}=4.\]
+        \item[(d)] Median: First we put the data in increasing order: 
+        \[-12,-8,-4,9,18,21.\]
+        Since there is an even number of data points, we take the average of the middle two:
+        \[\frac{-4+9}{2}=\frac{5}{2}.\]
+        This means that half of the nights were warmer than $2.5^\circ$F, and half were colder.
+    \end{enumerate}
+\end{solution}
+
+\begin{directions}
+    Ask students if they have any questions before moving on.
+\end{directions}
+
+\subsubsection{Two-variable data}
+
+Sometimes, there is a relationship between two pieces of data. We call this a relation.
+
+\begin{definition}{(Ordered pair)}{def:ordered_pair}
+    Suppose we have two related lists of data. An ordered pair, written $(x,y)$, is a pair of numbers where the first number $x$ comes from the first list and the second number $y$ comes from the second.
+\end{definition}
+
+\begin{definition}{(Relation)}{def:relation}
+    A relation is a set of ordered pairs. We can also think of it as two lists of data which are related to each other.
+\end{definition}
+
+\begin{definition}{(Domain and range)}{def:relation_domain_range}
+    \begin{itemize}
+        \item The domain of a relation is the set of $x$ values from the relation (first components of the ordered pairs)
+        \item The range of a relation is the set of $y$ values from the relation (second components of the ordered pairs)
+    \end{itemize}
+\end{definition}
+
+\begin{example}{Textbook 1.2 ex 2}{ex:1.2.2}
+    A physics class measured the time $y$ that it takes for an object to fall $x$ feet, as shown in the following table. The object was dropped twice from each height.
+    \begin{center} \tagpdfsetup{table/header-columns={1}}
+    \begin{tabular}{|r|c|c|c|c|} \hline
+        $x$ (feet) & $20$ & $20$ & $40$ & $40$ \\ \hline
+        $y$ (seconds) & $1.2$ & $1.1$ & $1.5$ & $1.6$ \\ \hline
+    \end{tabular}\end{center}
+    \begin{problem}
+        \item Express the data as a relation $S$.
+        \item Find the domain and range of $S$.
+    \end{problem}
+\end{example}
+\begin{solution}
+    \begin{problem}
+        \item A relation is a list of ordered pairs, so we need to list all of the ordered pairs from the table. Each column gives us an ordered pair. Thus, \[S=\bigl\{(20,1.2),(20,1.1),(40,1.5),(40,1.6)\bigr\}.\]
+        \item The domain is the set of possible $x$ values: \[D(S)=\{20,40\}.\] The range is the set of possible $y$ values: \[R(S)=\{1.2,1.1,1.5,1.6\}.\]
+    \end{problem}
+\end{solution}
+
+When we have two-variable data, it can be useful to represent this visually.
+\begin{definition}{(Cartesian coordinates)}{def:cartesian_coordinates}
+    To graph, we use the $xy$-plane, also called Cartesian coordinates. The horizontal axis is called the $x$-axis, and the vertical axis is the $y$-axis.
+    \begin{center}\begin{tikzpicture}[scale=.4,alt={the $xy$-plane}]
+        \draw[thick, <->] (-5,0) node[anchor=north east] {Negative $x$-axis} -- (5,0) node[anchor=north west] {$x$-axis};
+        \draw[thick, <->] (0,-5) node[anchor=north east] {Negative $y$-axis} -- (0,5) node[anchor=south west] {$y$-axis};
+        \filldraw (2,3) circle (2pt) node[anchor=north] {$(x,y)$};
+        \draw (2,-.1) node[anchor=north] {$x$} -- (2,.1);
+        \draw (-.1,3) node[anchor=east] {$y$} -- (.1,3);
+    \end{tikzpicture}\end{center}
+\end{definition}
+
+\begin{definition}{(Graphing two-variable data)}{def:graphing_2d}
+    \begin{itemize}
+        \item Graphing each point in a relation gives a scatterplot
+        \item If a relation only has one point per $x$ value, we can make a line graph by connecting consecutive points in the scatterplot with line segments
+    \end{itemize}
+\end{definition}
+
+\begin{example}{(Textbook 1.2 ex 3)}{ex:1.2.3}
+    Complete the following for the relation \[S=\bigl\{(5,10),(5,-5),(-10,10),(0,15),(-15,-10)\bigr\}.\]
+    \begin{problem}
+        \item Find the domain and range of the relation.
+        \item Determine the maximum and minimum of the $x$-vales and then of the $y$-values.
+        \item Label appropriate scalse on the $x-$ and $y$-axes.
+        \item Plot the relation as a scatterplot.
+    \end{problem}
+\end{example}
+\begin{solution}
+    \begin{problem}
+        \item The domain is the set of $x$ values: $D=\{5,-10,0,-15\}$.\\ The range is the set of $y$ values: $R=\{10,-5,15,-10\}$.
+        \item \;\vspace{-15pt}\begin{center} \tagpdfsetup{table/header-rows={1}}\tagpdfsetup{table/header-columns={1}}
+        \begin{tabular}{c|cc}
+            & Maximum & Minimum \\ \hline
+            $x$-values & $5$ & $-15$ \\
+            $y$-values & $15$ & $-10$
+        \end{tabular}\end{center}
+        \item The axes need to cover the full $x$ and $y$ range. It's also customary to include slightly more on each end. Since the data is all multiples of 5, we might have each tick represent 5. We can have the $x$ axis range from $-20$ to $10$, and the $y$ axis range from $-15$ to $20$.
+        \item \;\vspace{-15pt} \begin{center}\begin{tikzpicture}[alt={graph of the relation}]
+            \draw[very thick, <->] (-2,0) node[anchor=north east] {$-20$} -- (1,0) node[anchor=north west] {$10$};
+            \draw[very thick, <->] (0,-1.5) node[anchor=north] {$-15$} -- (0,2) node[anchor=south west] {$20$};
+            \draw[gray, thin, step=.5] (-2,-1.5) grid (1,2);
+            \filldraw (.5,1.0) circle (2pt);
+            \filldraw (.5,-.5) circle (2pt);
+            \filldraw (-1.0,1.0) circle (2pt);
+            \filldraw (0,1.5) circle (2pt);
+            \filldraw (-1.5,-1.0) circle (2pt);
+        \end{tikzpicture}\end{center}
+    \end{problem}
+    Note that we can't turn this into a line graph because there are multiple points with the same $x$ coordinate, so it isn't clear which points we would consider consecutive.
+\end{solution}
+
+\subsubsection{Midpoint between points}
+
+If we have two data points and want to find the point halfway between them, we can use the midpoint formula. 
+
+\begin{formula} {(Midpoint formula)}{formula:midpoint}
+    The midpoint of the line segment between points\((x_1,y_1)\) and \((x_2,y_2)\) is the point \[\left(\frac{x_1+x_2}{2},\frac{y_1+y_2}{2}\right).\] In other words, its coordinates are the average of the coordinates of the two endpoints.
+\end{formula}
+
+\begin{example}{(Textbook 1.2 ex 7)}{ex:1.2.7}
+    Find the midpoint of the line segment connecting the points \((6,-7)\) and \((-4,6)\).
+\end{example}
+\begin{solution}
+    We have \((x_1,y_1)=(6,-7)\) and \((x_2,y_2)=(-4,6)\). Plugging these into the midpoint formula, we get
+    \begin{align*}
+        \left(\frac{x_1+x_2}{2},\frac{y_1+y_2}{2}\right) &= \left(\frac{6+(-4)}{2},\frac{-7+6}{2}\right) \\
+        &= \left(\frac{2}{2},\frac{-1}{2}\right) \\
+        &= \left(1,-\frac{1}{2}\right).
+    \end{align*}
+\end{solution}
+
+This can be useful for making estimates in real-world scenarios.
+
+\begin{example}{}{ex:1.2_linear_interpolation}
+    Suppose the weather forecast calls for 2 inches of snow to fall between midnight and 6 am. Use the midpoint formula to estimate how much snow will have fallen by 3 am.
+\end{example}
+\begin{solution}
+    First, we need to find the endpoints. At midnight, it has been 0 hours since snow started falling, and 0 inches of snow have fallen. We can interpret this as the point \((0,0)\). At 6 am, it has been 6 hours since snow started falling, and 2 inches have fallen; this gives us the point \((6,2)\).
+
+    Now we plug the points into the formula:
+    \begin{align*}
+        \left(\frac{x_1+x_2}{2},\frac{y_1+y_2}{2}\right) &= \left(\frac{0+6}{2},\frac{0+2}{2}\right) \\
+        &=\left(\frac{6}{2},\frac{2}{2}\right) \\
+        &=(3,1).
+    \end{align*}
+    Back in the original context, this means that 3 hours after the snowfall starts, we expect there to be 1 inch of snow on the ground.
+\end{solution}
+
+\subsubsection{Distance between points}
+
+Sometimes, we want to be able to find the distance between two points on the plane. 
+
+We can compute the vertical and horizontal distances between the points as the difference between the $y$ coordinates and $x$ coordinates, respectively. Then the Pythagorean theorem allows us to find the distance between the two points:
+
+\begin{formula}{(Pythagorean Theorem)}{formula:pythag}
+    Let \(\triangle ABC\) be a right triangle with sides $a,b,c$. If \(c\) is the hypotenuse, then we have \[a^2+b^2=c^2.\] Taking the square root of both sides, we get the relationship \[c=\sqrt{a^2+b^2}.\]
+\end{formula}
+\begin{definition}{(Distance between points)}{def:distance_formula}
+    \begin{center}\begin{tikzpicture}[scale=.5,alt={example of right triangle made from two points on the plane}]
+        \draw[thick, <->] (-1,0) -- (6,0);
+        \draw[thick, <->] (0,-1) -- (0,5);
+        \draw[dotted] (1,4) node[anchor=south] {$\scriptstyle (x_1,y_1)$} -- (1,1) -- (5,1) node[anchor=west] {$\scriptstyle (x_2,y_2)$};
+        \draw (1,4) -- (5,1);
+    \end{tikzpicture}
+    % alt={Drawing of right triangle with sides parallel to axes given by two points in the plane}
+    \end{center}
+    The distance between $(x_1,y_1)$ and $(x_2,y_2)$ is the length of the hypotenuse of a triangle whose sides are the change in $x$, $x_2-x_1$, and the change in $y$, $y_2-y_1$. Thus it is \[\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}\]
+\end{definition}
+
+\begin{example}{}{ex:1.2_distance_points}
+    Find the distance between the points $(1,4)$ and $(5,1)$.
+\end{example}
+\begin{solution}
+    We have \begin{align*}(x_1,y_1)&=(1,4) \\ (x_2,y_2)&=(5,1).\end{align*} Then we plug these into the formula and simplify to find the distance:
+    \begin{align*}
+        \sqrt{(x_2-x_1)^2+(y_2-y_1)^2}&=\sqrt{(5-1)^2+(1-4)^2}\\
+        &=\sqrt{(4)^2+(-3)^2}\\
+        &=\sqrt{16+9}\\
+        &=\sqrt{25}\\
+        &=5.
+    \end{align*}
+    Therefore, the two points are 5 units apart.
+\end{solution}
+
+\begin{example}{(Textbook 1.2 ex 6)}{ex:1.2.6}
+    Suppose that at noon car $A$ is traveling south at 20 miles per hour and is located 80 miles north of car $B$. Car $B$ is traveling east at 40 miles per hour.
+    \begin{problem}
+        \item Let $(0,0)$ be the initial coordinates of car $B$ in the $xy$-plane, where units are in miles. Plot the location of each car at noon and at 1:30 pm.
+        \item Approximate the distance between the cars at 1:30 pm.
+    \end{problem}
+\end{example}
+\begin{solution}
+    \begin{problem}
+        \item First we need to figure out where the points are.
+        
+        We know that car $B$ is at $(0,0)$ at noon, and $A$ is 80 miles north of $B$. Therefore, car $A$ is at $(0,80)$ at noon.
+
+        Between noon and 1:30 pm is 1.5 hours. Car $A$ is moving 20 mph south, so travels $20\frac{\text{miles}}{\text{hour}}\cdot 1.5\text{ hours}=30$ miles south. Therefore, car $A$ is at $(0,50)$ at 1:30 pm.
+
+        Car $B$ is moving 40 mph east, so travels $40\frac{\text{miles}}{\text{hour}}\cdot1.5\text{ hours}=60$ miles east. Therefore, car $B$ is at $(60,0)$ at 1:30 pm.
+        \begin{center}\begin{tikzpicture}[alt={plot of the locations of the cars}]
+            \draw[thick, <->] (-1,0) -- (5,0);
+            \draw[thick, <->] (0,-1) -- (0,5);
+            \filldraw (0,0) circle (2pt) node[anchor=north west] {$B$ at noon; $(0,0)$};
+            \filldraw (0,4) circle (2pt) node[anchor=west] {$A$ at noon; $(0,80)$};
+            \filldraw (3,0) circle (2pt) node[anchor=south] {$B$ at 1:30; $(60,0)$};
+            \filldraw (0, 2.5) circle (2pt) node[anchor=west] {$A$ at 1:30; $(0,50)$};
+        \end{tikzpicture}\end{center}
+        \item We need to find the distance between the points $(x_1,y_1)=(0,50)$ and $(x_2,y_2)=(60,0)$. Plugging these into the formula, we get
+        \begin{align*}
+            \sqrt{(x_2-x_1)^2+(y_2-y_1)^2}&=\sqrt{(60-0)^2+(0-50)^2}\\
+            &=\sqrt{(60)^2+(-50)^2}\\
+            &=\sqrt{3600+2500}\\
+            &=\sqrt{6100}\\
+            &=10\sqrt{61}.
+        \end{align*}
+    \end{problem}
+\end{solution}
+
+\subsubsection{Circles}
+
+\begin{directions}
+    Ask students how to characterize a circle.
+\end{directions}
+\begin{definition}{(Circle)}{def:circle}
+    A circle is the set of all points at a set distance from a fixed center. We call the distance from each point to the center the radius of the circle.
+
+    Denote the center by the point \((h,k)\) and the radius by \(r\).
+\end{definition}
+
+The distance equation tells us that every point \((x,y)\) on the circle with radius \(r\) and center \((h,k)\) satisfies \[\sqrt{(x-h)^2+(y-k)^2}=r.\] Squaring both sides gives us the standard equation of a circle:
+
+\begin{formula} {(Standard equation for a circle)}{eqn:circle_standard}
+    The equation for the circle with radius \(r\) and center \((h,k)\) is \[(x-h)^2+(y-k)^2=r^2.\] % In the special case that \((h,k)=(0,0)\) then we can simplify this to \(x^2+y^2=r^2\).
+\end{formula}
+
+\begin{example}{}{ex:1.2_circle_data_to_eqn}
+    Write the equation for a circle with radius 5 and center \((1,0)\).
+\end{example}
+\begin{solution}
+    We have \(r=5\) and \((h,k)=(1,0)\). Plugging this into the standard form, we get \[(x-1)^2+(y-0)^2=5^2,\] or equivalently \[(x-1)^2+y^2=25.\]
+\end{solution}
+
+\begin{example}{(Textbook 1.2 ex 9)}{ex:1.2.9}
+    Find the center and radius of the circle with the given equation. Graph each circle.
+    \begin{problem}
+        \item \(x^2+y^2=9\)
+        \item \((x-1)^2+(y+2)^2=4\)
+    \end{problem}
+\end{example}
+\begin{solution}
+    \begin{problem}
+        \item Since \(x=x-0\) and \(y=y-0\), we can equivalently write this as \((x-0)^2+(y-0)^2=4\). Then the center is \((-0,-0)=(0,0)\) and the radius is \(\sqrt{9}=3\).
+        \item The center is \((-(-1),-2)=(1,-2)\) and the radius is \(\sqrt{4}=2\).
+    \end{problem}
+    \begin{center} \tagpdfsetup{table/tagging=presentation}
+    \begin{tabular}{cc}
+    \begin{tikzpicture}[scale=.6,alt={graph of cirle a}]
+        \draw[very thick,<->] (-2.1,0) -- (2.1,0) node[anchor=west] {\(x\)};
+        \draw[very thick,<->] (0,-2.1) -- (0,2.1) node[anchor=south] {\(y\)};
+        \draw[gray, thin,step=.5] (-2,-2) grid (2,2);
+        \filldraw (0,0) circle (2pt);
+        \draw (0,0) circle (1.5);
+    \end{tikzpicture}
+    &
+    \begin{tikzpicture}[scale=.8, alt={graph of circle b}]
+        \draw[very thick,<->] (-1.1,0) -- (2.1,0) node[anchor=west] {\(x\)};
+        \draw[very thick,<->] (0,-2.6) -- (0,.6) node[anchor=south] {\(y\)};
+        \draw[gray, thin,step=.5] (-1,-2.5) grid (2,.5);
+        \filldraw (.5,-1) circle (2pt);
+        \draw (.5,-1) circle (1);
+    \end{tikzpicture}
+    \end{tabular}\end{center}
+\end{solution}
+
+Sometimes, we might know the center and one point on the circle. Then we can find the radius by using the distance formula to determine the distance between the two points.
+
+We might also be given two endpoints of a diameter of a circle. Then the center is the midpoint, which we can find with the midpoint formula, and the radius can be found using the distance formula with one of the endpoints and the center we found.
+
+\subsubsection{Completing the square}
+
+Whenever we have a term like \((x-h)^2=(x-h)(x-h)\), we can use FOIL to multiply it out.
+
+\begin{directions}
+    Ask students if they remember what FOIL is. Remind students that FOIL stands for First, Outer, Inner, Last and demonstrate multiplying out \((x-h)^2=x^2-2xh+h^2\).
+\end{directions}
+
+In particular, we can manipulate the equation of a circle by multiplying out the squared terms to get something in the form of a general equation of a circle.
+\begin{formula}{(General equation of a circle)}{eqn:circle_general}
+    The general equation of a circle has the form \[x^2+ax+y^2+by=c\] for some constants \(a,b,c\).
+\end{formula}
+
+When we want to determine the center and/or radius of a circle given its equation in general form, we need to use a process called completing the square.
+
+\begin{process}{Completing the square}{formula:complete_the_square}
+    We start with an expression of the form \(x^2+ax\) and want to get an expression resembling \((x+b)^2\). Observe that \((x+\frac{a}{2})^2=x^2+ax+\left(\frac{a}{2}\right)^2\). Therefore, $x^2+ax=(x+\frac{a}{2})^2-\left(\frac{a}{2}\right)^2$.
+
+    We call this completing the square because the extra term \(\left(\frac{a}{2}\right)^2\) allows us to make a perfect square:
+    \begin{center}\begin{tikzpicture}[alt={visual for completing the square}]
+        
+    \end{tikzpicture}\end{center}
+    \vspace{2in}
+\end{process}
+
+\begin{example}{}{ex:1.2_complete_the_square}
+    Complete the square with the following equation: \(y^2-6y=18\).
+\end{example}
+\begin{solution}
+    In this equation, we use the variable \(y\) instead of \(x\); however, the process still works in exactly the same way. We have \(a=-6\), so get that \(y^2-6y=(y+\frac{-6}{2})^2-(-6/2)^2\). Substituting this into the original equation, we have $(y-3)^2+9=18$, which turns into $(y-3)^3=9$ when we move all constant terms to the right.
+\end{solution}
+
+\begin{directions}
+    Ask students if this makes sense. If not, do another example.
+\end{directions}
+
+\begin{example}{(Textbook 1.2 ex 12)}{ex:1.2.12}
+    Find the center and radius of the circle given by \(x^2+4x+y^2-6y=5\).
+\end{example}
+\begin{solution}
+    First, we need to transform the equation into standard form. We will do this by completing the square with both the \(x\) terms and the \(y\) terms.
+
+    The \(x\) terms are \(x^2+4x\). Completing the square, we get \(x^2+4x=(x+\frac{4}{2})^2-\left(\frac{4}{2}\right)^2\).
+
+    The \(y\) terms are \(y^2-6y\). Completing the square, we get \(y^2-6y=(y+\frac{-6}{2})^2-\left(\frac{-6}{2}\right)^2\).
+
+    Substituting both of these into the original equation and simplifying, we get
+    \begin{align*}
+        (x^2+4x)+(y^2-6y)&=5\\
+        ((x+2)^2-4)+((y-3)^2-9)&=5\\
+        (x+2)^2+(y-3)^2-4-9&=5\\
+        (x+2)^2+(y-3)^2&=5+4+9=18.
+    \end{align*}
+
+    Now we can find the center and radius. The center is \((-2,3)\) and the radius is \(\sqrt{18}\).
+\end{solution}
+
+\end{document}
