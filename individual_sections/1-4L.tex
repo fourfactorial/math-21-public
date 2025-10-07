@@ -1,0 +1,242 @@
+% uncomment this to compile by itself
+% \DocumentMetadata{
+%     lang=en-US,
+%     tagging=on,
+%     pdfversion=2.0,
+%     pdfstandard=ua-2,
+%     tagging-setup={math/setup=mathml-SE},
+%     colorprofiles={
+%         A = sRGB.icc, %or longer GTS_PDFA1 = sRGB.icc
+%         X = sRGB.icc,
+%         ISO_PDFE1 = sRGB.icc
+%     },
+%     % pdftitle={Lecture notes - accessibility test},
+%     % pdfauthor={Silas Mitchell}
+% }
+
+\documentclass{article}
+\usepackage[]{notes}
+
+\begin{document}
+
+\setcounter{section}{1}
+\setcounter{subsection}{3}
+
+\subsection{Functions and Rates of Change - Linear}
+
+\subsubsection{Refresher - linear functions}
+
+Before exam 1, we looked at functions and linear equations. 
+\begin{definition}{(Recall: previous definitions)}{def:linear_functions_refresher}
+    \begin{itemize}
+        \item A function is a special type of relation where each input corresponds to exactly one output. We write $f(x)=y$ to mean that on input $x$, the function $f$ returns output $y$.
+        \item A linear equation describes a line on the plane. All linear equations can be written in the form $ax+by=c$.
+        \item A linear function is a linear equation which is also a function; we can write these in the form $f(x)=mx+b$.
+        \item To find slope, we need two points $(x_1,y_1),(x_2,y_2)$ and we use the formula \[m=\frac{\text{rise}}{\text{run}}=\frac{y_2-y_1}{x_2-x_1}.\]    
+        \item The $x$-intercept of a line is the coordinate where it crosses the $x$-axis. The $y$-intercept of a line is where it crosses the $y$-axis.
+        \item We can write the equation of a line as $y=mx+b$, where $m$ is the slope and $b$ is the $y$-intercept.
+        \item We can also write the equation of a line as $y=m(x-x_1)+y_1$ where $m$ is the slope and $(x_1,y_1)$ is any point on the line.
+    \end{itemize}
+\end{definition}
+
+\subsubsection{Find and interpret slope}
+
+The slope tells us the rate of change of a function. Positive slope means the function is increasing, and negative slope means the function is decreasing.
+
+\begin{example}{(Textbook 1.4 ex 1)}{ex:1.4.1}
+    Find the slope of the line passing through the points $(-2,3)$ and $(1,-2)$. Plot these points and the line. Explain what the slope indicates about the line.
+\end{example}
+\begin{solution}
+    We have two points, which is the information we need for the slope formula. Plugging in and simplifying, we get \[m=\frac{y_2-y_1}{x_2-x_1}=\frac{-2-3}{--(-2)}=\frac{-5}{3}.\]
+    Since the slope is negative, we know that the function is decreasing.
+
+    Now we want to graph the two points and the function:
+    \begin{center}\begin{tikzpicture}[alt={Graph of the given line},scale=.5]
+        \draw[very thick,<->] (-4.2,0) -- (4.2,0) node[anchor=west] {$x$};
+        \draw[very thick,<->] (0,-4.2) -- (0,4.2) node[anchor=west,fill=white] {$y$};
+        \draw[thin,gray] (-4.1,-4.1) grid (4.1,4.1);
+        \filldraw (-2,3) circle (4pt) node[anchor=east,fill=white] {$(-2,3)$};
+        \filldraw (1,-2) circle (4pt) node[anchor=west,fill=white] {$(1,-2)$};
+        \draw[blue,<->] plot[domain=-2.8:2.3] (\x,-5*\x/3-1/3);
+    \end{tikzpicture}\end{center}
+\end{solution}
+% \includegraphics[width=6.5in]{Textbook_Mandatory_Examples/Exam2/1.4 - Linear/1.4.1.png}
+
+We can identify slope from a linear equation, and then use it to graph lines. After we have a first point, the slope gives us a recipe for finding a next point: since slope is rise over run, it tells us how many units up/over to go to find a next point.
+
+\begin{example}{(Textbook 1.4 ex 5)}{ex:1.4.5}
+    Graph the linear function $f(x)=-2x+3$. Identify the slope and $y$-intercept.
+\end{example}
+\begin{solution}
+    We are given a linear equation in slope intercept form ($y=mx+b$), so we can immediately find the slope and $y$-intercept:
+    \begin{align*}
+        &\text{slope}=-2\\
+        &y\text{-intercept}=3.
+    \end{align*}
+    Now we want to graph the function. We can graph the $y$-intercept, and then use the slope to find a second point. The slope of $-2$ tells us that we can go over 1 unit and down 2 units to find another point.
+    \begin{center}\begin{tikzpicture}[scale=.5,alt={Graph of the given line}]
+        \draw[very thick, <->] (-5.2,0) -- (5.2,0) node[anchor=west] {$x$};
+        \draw[very thick, <->] (0,-5.2) -- (0,5.2) node[anchor=south] {$y$};
+        \draw[gray,thin] (-5.1,-5.1) grid (5.1,5.1);
+        \filldraw (0,3) circle (4pt) node[anchor=east,fill=white] {$(0,3)$};
+        \filldraw (1,1) circle (4pt) node[anchor=west,fill=white] {$(1,1)$};
+        \draw[blue, <->] plot[domain=-1.1:4.1] (\x,-2 * \x + 3);
+    \end{tikzpicture}
+    \end{center}
+\end{solution}
+% \includegraphics[width=6.5in]{Textbook_Mandatory_Examples/Exam2/1.4 - Linear/1.4.5.png}
+
+\begin{definition}{}{def:zeros}
+    A zero of a function $f$ is an $x$ value for which $f(x)=0$.
+\end{definition}
+
+\begin{example}{(Textbook 1.4 ex 4)}{ex:1.4.4}
+    Use the graph of the linear function $f$ below to complete the following.
+    \begin{problem}
+        \item Find the slope, $y$-intercept, and $x$-intercept.
+        \item Write a formula for $f$.
+        \item Find any zeros of $f$.
+    \end{problem}
+    \begin{center}\begin{tikzpicture}[alt={Textbook figure 1.82},scale=.5]
+        \draw[very thick,<->] (-5.2,0) -- (5.2,0) node[anchor=west] {$x$};
+        \draw[very thick,<->] (0,-5.2) -- (0,5.2) node[anchor=south] {$y$};
+        \draw[thin,gray] (-5.1,-5.1) grid (5.1,5.1);
+        \draw[blue,<->] plot[domain=-5.1:5.1] (\x, -1 - .25 * \x);
+        \draw (4,.2) -- (4,-.2) node[anchor=north] {$4$};
+        \draw (.2,4) -- (-.2,4) node[anchor=east] {$4$};
+    \end{tikzpicture}\end{center}
+\end{example}
+\begin{solution}
+    \begin{problem}
+        \item To find the slope, we need two points on the line. We can use the points $(0,-1)$ and $(4,-2)$. Then we plug into the slope formula and simplify:
+        \[m = \frac{-2-(-1)}{4-0}=\frac{-1}{4}.\]
+        The $y$-intercept is where the line crosses the $y$-axis, or the point on the line with $x$ coordinate 0; this is $(0,-1)$.
+
+        The $x$-intercept is where the line crosses the $x$-axis, or the point where $y=0$. On the graph, we can see this to be $(-4,0)$.
+        \item We know that the slope is $-\frac{1}{4}$ and the $y$-intercept is $-1$, so in slope-intercept form we can write this line as $f(x)=-\frac{1}{4}x-1$.
+        \item For a line, its zero is the $x$-intercept. We already found this to be $(-4,0)$ so there is one zero at $x=-4$.
+    \end{problem}
+\end{solution}
+% \includegraphics[width=6.5in]{Textbook_Mandatory_Examples/Exam2/1.4 - Linear/1.4.4.png}
+
+\begin{definition}{}{def:slope_as_rate}
+    When we use functions to model real-world scenarios, slope tells us how a quantity changes. For example, if we have a line modeling distance over time, the slope tells us the rate of change of distance over time, or speed.
+\end{definition}
+
+\begin{example}{(Textbook 1.4 ex 2)}{ex:1.4.2}
+    The function given by $P(x)=19.4x$ calculates the pounds of $\text{CO}_2$ (carbon dioxide) released into the atmosphere by a car burning $x$ gallons of gasoline.
+    \begin{problem}
+        \item Calculate $P(5)$ and interpret the result.
+        \item Find the slope of the graph of $P$. Interpret this slope as a rate of change.
+    \end{problem}
+\end{example}
+\begin{solution}
+    \begin{problem}
+        \item To find $P(5)$, we substitute in $x=5$ and simplify:
+        \begin{align*}
+            P(x)&=19.4x\\
+            P(5)&=19.4(5)\\
+            &=97.
+        \end{align*}
+        Thus $P(5)=97$. This tells us that when a car burns 5 gallons of gas, this releases 97 pounds of carbon dioxide into the atmosphere.
+        \item Since this line is in slope-intercept form already, we can see that the slope is the coefficient on $x$, which is $19.4$. As a rate of change, this tells us that for each additional gallon of gas burned, there is an additional 19.4 pounds of carbon dioxide released.
+    \end{problem}
+\end{solution}
+% \includegraphics[width=6.5in]{Textbook_Mandatory_Examples/Exam2/1.4 - Linear/1.4.2.png}
+
+\begin{definition}{}{def:increasing_vs_decreasing}
+    A function is increasing when $f(a)<f(b)$ whenever $a<b$. The slope of an increasing function is positive.
+
+    A function is decreasing when $f(a)>f(b)$ whenever $a>b$. The slope of a decreasing function is negative.
+
+    A function is constant when it has the same value regardless of $x$. The slope of a constant function is 0.
+\end{definition}
+
+\includegraphics[width=6.5in]{Textbook_Mandatory_Examples/Exam2/1.4 - Linear/1.4.8.png}
+
+\begin{definition}{(Average rate of change)}{def:average_rate_of_change}
+    The average rate of change of a function $f$ between two $x$-values $a$ and $b$ is the slope of the line between $(a,f(a))$ and $(b,f(b))$.
+\end{definition}
+
+\begin{example}{}{ex:avg_rate_of_change_linear}
+    Find the average rate of change of $f(x)=4x-2$ between $x=0$ and $x=2$.
+\end{example}
+\begin{solution}
+    First, we evaluate the function at the given $x$-values:
+    \begin{align*}
+        f(0)&=4(0)-2=0-2=-2\\
+        f(2)&=4(2)-2=8-2=6
+    \end{align*}
+    Then we use the slope formula at the points $(0,-2)$ and $(2,6)$:
+    \[m=\frac{6-(-2)}{2-0}=\frac{8}{2}=4.\]
+    Note that the average rate of change we found is equal to the slope; this is what we expect since the slope tells us the rate of change of the line.
+\end{solution}
+
+\begin{example}{}{ex:rate_of_change_nonlinear}
+    Find the average rate of change for the function $f(x)=x^2+5$:
+    \begin{problem}
+        \item between $x=-2$ and $x=2$
+        \item between $x=0$ and $x=4$
+        \item between $x=1$ and $x=3$
+    \end{problem}
+\end{example}
+\begin{solution}
+    \begin{problem}
+        \item First, we need to evaluate the function at the given $x$ values.
+        \begin{align*}
+            f(-2)&=(-2)^2+5=4+5=9 &&\Rightarrow \qquad\qquad(-2,9)\\
+            f(2)&=(2)^2+5=4+5=9 &&\Rightarrow \qquad\qquad(2,9)
+        \end{align*}
+        Then we plug these two points into the slope formula:
+        \[m=\frac{9-9}{2-(-2)}=\frac{0}{4}=0.\]
+        \item We evaluate the function at the given $x$ values, then plug the resulting points into the slope formula.
+        \begin{align*}
+            f(0)&=(0)^2+5=0+5=5\\
+            f(4)&=(4)^2+5=16+5=21\\
+            m&=\frac{21-5}{4-0}=\frac{16}{4}=4.
+        \end{align*}
+        \item We do the same as from the previous 2 parts:
+        \begin{align*}
+            f(1)&=(1)^2+5=1+5=6\\
+            f(3)&=(3)^2+5=9+5=14\\
+            m&=\frac{14-6}{3-1}=\frac{8}{2}=4.
+        \end{align*}
+    \end{problem}
+\end{solution}
+
+
+\begin{definition}{(Difference quotient)}{def:difference_quotient}
+    The difference quotient is the average rate of change between $x$ and $x+h$. 
+    
+    From our definition of average rate of change, we know that it is the slope between points $(x,f(x))$ and $(x+h,f(x+h))$. We can get the formula for a difference quotient by evaluating this and simplifying:
+    \[\frac{f(x+h)-f(x)}{(x+h)-x}=\boxed{\frac{f(x+h)-f(x)}{h}}.\]
+\end{definition}
+
+\begin{example}{(Textbook 1.4 ex 13)}{ex:1.4.13}
+    Let $f(x)=3x-2$.
+    Find the difference quotient of $f$ and simplify the result.
+\end{example}
+\begin{solution}
+    To find the difference quotient, we will use the formula \[\frac{f(x+h)-f(x)}{h}.\]
+
+    First, let's find $f(x+h)$ so that we can plug this in:
+    \begin{align*}
+        f(x)&=3x-2\\
+        f(x+h)&=3(x+h)-2\\
+        &=3x+3h-2.
+    \end{align*}
+    Now we plug into the formula:
+    \begin{align*}
+        \frac{f(x+h)-f(x)}{h}&=\frac{(3x+3h-2)-(3x-2)}{h}\\
+        &=\frac{3x+3h-2-3x+2}{h}\\
+        &=\frac{3h}{h}\\
+        &=3.
+    \end{align*}
+\end{solution}
+% \includegraphics[width=6.5in]{Textbook_Mandatory_Examples/Exam2/1.4 - Linear/1.4.13.png}
+
+\begin{remark}{}{rmk:slope_diff_quotient}
+    When we solved for the difference quotient, we got the slope of the line. This is exactly what we expect since the difference quotient and slope both represent the rate of change of the line, so should be equal.
+\end{remark}
+
+\end{document}
