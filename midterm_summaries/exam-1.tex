@@ -1,0 +1,251 @@
+\DocumentMetadata{
+    lang=en-US,
+    tagging=on,
+    pdfversion=2.0,
+    pdfstandard=ua-2,
+    % modules={phase-III,title,math,table,tikz,firstaid},
+    tagging-setup={math/setup=mathml-SE},
+    colorprofiles={
+        A = sRGB.icc, %or longer GTS_PDFA1 = sRGB.icc
+        X = sRGB.icc,
+        ISO_PDFE1 = sRGB.icc
+    },
+    % pdftitle={Lecture notes - accessibility test},
+    % pdfauthor={Silas Mitchell}
+}
+
+\documentclass{article}
+\usepackage{amsmath,fancyhdr}
+\usepackage[letterpaper,total={6.5in,9in},left=1in,top=.8in]{geometry} 
+
+\usepackage{tagpdf}
+\tagpdfsetup{math/mathml/structelem}
+% \usepackage{axessibility}
+
+\setlength{\headheight}{50pt} % header height
+\setlength{\headsep}{12pt} % header spacing
+\setlength{\parindent}{0mm} % no indentation
+\setlength{\parskip}{3mm} % space after paragraphs/environments
+
+\pagestyle{fancy}
+\lhead{MATH 21}
+\rhead{Problem-solving}
+
+\title{Solving Problems in MATH 21}
+\author{Silas Mitchell}
+\date{Fall 2025}
+
+\begin{document}
+
+\maketitle
+
+\section*{Algebra rules}
+
+\subsection*{Simplifying expressions}
+
+When we simplify an expression, we have to be careful not to change the value of the expression.
+
+We have to respect the order of operations:
+\begin{enumerate}
+    \item Evaluate anything in parentheses $()$ or brackets $[]$
+    \item Evaluate exponents $a^b$ and roots $\sqrt[n]{x}$
+    \item Evaluate multiplications $\times$/$\cdot$ and divisions $\div$/$\frac{a}{b}$
+    \item Evaluate addition $+$ and subtraction $-$
+\end{enumerate}
+At each stage, we work left to right.
+
+Sometimes, we need to evaluate multiplication of something grouped in parentheses before we evaluate the expression in parentheses. Then, we use the distributive laws:
+\begin{align*}
+    a(b+c)&=ab+ac\\
+    (a+b)c&=ac+bc
+\end{align*}
+If we combine these equations, we get FOIL:
+
+$\qquad${\bf F}irst\\$\qquad${\bf O}uter\\$\qquad${\bf I}nner\\$\qquad${\bf L}ast 
+
+or, as a formula: \[(a+b)(c+d)=ac+ad+bc+bd.\]
+
+When we work with fractions, we need to be very careful to not change the value. Here are some rules of fraction arithmetic:
+
+\begin{align*}
+    a&=\frac{a}{1} && \text{Make a whole number into a fraction}\\
+    \frac{a}{b}&=\frac{a}{b}\cdot\frac{c}{c}=\frac{ac}{bc}&&\text{Change denominator by multiplying by 1}\\
+    \frac{a}{c}+\frac{b}{c}&=\frac{a+b}{c} && \text{Addition with common denominators}\\
+    \frac{a}{b}+\frac{c}{d}&=\frac{ad}{bd}+\frac{bc}{bd}=\frac{ad+bc}{bd} && \text{General addition rule}\\
+    \frac{a}{c}-\frac{b}{c}&=\frac{a-b}{c} && \text{Subtraction with common denominators}\\
+    \frac{a}{b}-\frac{c}{d}&=\frac{ad}{bd}-\frac{bc}{bd}=\frac{ad-bc}{bd} && \text{General subtraction rule}\\
+    \frac{a}{b}\cdot\frac{c}{d}&=\frac{ac}{bd} && \text{Multiplication rule}\\
+    a\div\frac{b}{c}&=a\cdot\frac{c}{b} && \text{Change division into multiplication by reciprocal}
+\end{align*}
+
+
+
+\subsection*{Working with equations}
+
+We're allowed to do several things when we have an equation:
+\begin{itemize}
+    \item Add/subtract something from both sides of an equation
+    \item Multiply/divide both sides of the equation by the same thing
+    \item Simplify the expression on either side of the equals sign
+    \item Replace a term with something we know is equal
+\end{itemize}
+
+\section*{What we've learned - exam 1}
+
+Single variable data is a list of numbers. We can calculate several statistics:
+\begin{itemize}
+    \item Minimum: smallest value
+    \item Maximum: biggest value
+    \item Range: difference between minimum and maximum
+    \item Mode: value that appears the most (might not be unique)
+    \item Mean: sum all values, then divide by the number of values in the list
+    \item Median: middle value; if there's an even number of values, average of the middle two
+\end{itemize}
+
+Two-variable data is two lists of numbers with a relationship between them. Alternatively, we can view two-variable data as a list of ordered pairs.
+We write ordered pairs as $(x,y)$. A set of ordered pairs is called a relation.
+
+The domain of a relation is the set of $x$-values from the ordered pairs. The range of a relation is the set of $y$-values from the ordered pairs. If we're looking at a relation as two lists with a relationship between them, the domain is the first list of numbers and the range is the second.)
+
+When we have ordered pairs, we can graph them on the $xy$-plane. When we have points on the plane, there are several things we might want to do. Suppose $(x_1,y_1)$ and $(x_2,y_2)$ are two points.
+\begin{itemize}
+    \item The point halfway between them is given by the midpoint formula: \[\left(\frac{x_1+x_2}{2},\frac{y_1+y_2}{2}\right)\] 
+    \item The distance between them is given by the distance formula: \[d=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}.\] 
+\end{itemize}
+
+A circle is the set of all points which are a fixed distance (called the radius) away from a fixed center point. We can describe circles with an equation. The circle with radius $r$ and center $(h,k)$ is given by the standard form equation \[(x-h)^2+(y-k)^2=r^2.\] 
+Since the equation for a circle has squared terms which could be FOILed out, we might sometimes see equations for circles in the ``simpler'' general form, $x^2+ax+y^2+by=c$. In order to find the center and radius, we have to algebraically manipulate the equation to get it in standard form. The tool for this is called ``completing the square''.
+
+Completing the square means making the algebraic substitution \[x^2+ax=\left(x+\frac{a}{2}\right)^2-\left(\frac{a}{2}\right)^2.\]
+Because the two quantities are equal, we can substitute in, then simplify to get an equation in standard form using our allowed algebraic operations:
+\begin{align*}
+    x^2+ax+y^2+by&=c\\
+    \left(x+\frac{a}{2}\right)^2-\left(\frac{a}{2}\right)^2+y^2+by&=c\\
+    \left(x+\frac{a}{2}\right)^2-\left(\frac{a}{2}\right)^2+\left(y+\frac{b}{2}\right)^2-\left(\frac{b}{2}\right)^2&=c\\
+    \left(x+\frac{a}{2}\right)^2+\left(y+\frac{b}{2}\right)^2&=c+\frac{a^2+b^2}{4}.
+\end{align*}
+We completed the square twice, once on the $x$ terms and once on the $y$ terms, then moved all constant terms (everything without an $x$ or a $y$) to the right-hand side. Since this is in standard form, we can see that the center is $\left(-\frac{a}{2},-\frac{b}{2}\right)$ and the radius is $\sqrt{c+\frac{a^2+b^2}{4}}$.
+
+A function is a special type of relation where every element of the domain corresponds to exactly one element of the range. On a graph, we check this using the vertical line test: a graph depicts a function if every vertical line crosses it at no more than 1 point.
+
+We have four different ways we represent functions:
+\begin{itemize}
+    \item Symbolic representation: represent a function with a formula $f(x)$.\\Ex: $f(x)=5x$
+    \item Verbal representation: describe in words the computation of a function.\\Ex: ``multiply $x$ by 5''
+    \item Graphical representation: draw the graph of a function.
+    \item (Partial) numerical representation: table of pairs of $x$ and $y$ values.
+\end{itemize}
+
+The domain of a function is every possible input. When we find the domain from a formula, there are two main things to look out for:
+\begin{itemize}
+    \item We cannot divide by 0, so any $x$ value that makes the denominator of a fraction equal $0$ is not in the domain of that function.\\Look for things of the form $\frac{1}{ax+b}$, which will tell us that $x=-\frac{b}{a}$ is not in the domain.
+    \item We cannot take the square root of a negative number, so any $x$ value that makes something under a square root negative is not in the domain of that function.\\Look for thing like $\sqrt{x+b}$, which tells us that $x<-b$ is not in the domain.
+\end{itemize}
+
+Most functions we care about will have infinite domains, so we need to be able to describe infinite sets of numbers. We use two different types of notation for this:
+\begin{itemize}
+    \item Set builder notation: we write the set of all real numbers that meet a set of conditions as \[\{x:[\text{conditions}]\}.\]
+    \item Interval notation: we write everything in-between two endpoints using specific notation depending on whether the endpoints are included or not:
+        \begin{center}\tagpdfsetup{table/header-columns={1}}
+        \begin{tabular}{ccc}
+            $a<x<b$ & $\quad\Leftrightarrow\quad$ & $(a,b)$ \\
+            $a\leq x<b$ & $\Leftrightarrow$ & $[a,b)$ \\
+            $a<x\leq b$ & $\Leftrightarrow$ & $(a,b]$ \\
+            $a\leq x \leq b$ & $\Leftrightarrow$ & $[a,b]$
+        \end{tabular}
+        \end{center}
+        When the endpoint is included, we use square brackets on that side, and when it is not included we use parentheses.
+
+        If we have no lower endpoint, we write $(-\infty$. If we have no upper endpoint, we write $\infty)$. $\pm\infty$ always gets a parenthesis because it is not an actual number, so is not in the set.
+        
+        If we need to write a set as a combination of multiple intervals, we write it as a union: $(a,b)\cup[c,d)$ means any point that comes from the first interval {\it or} from the second interval.
+\end{itemize}
+
+When we have two points, we can draw a straight line through them. Lines have many nice mathematical properties.
+
+We call the point where a line crosses the $x$-axis its $x$-intercept, and the point where a line crosses the $y$-axis its $y$-intercept. Vertical lines might not have a $y$-intercept, and horizontal lines might not have an $x$-intercept; all other lines have one of each.
+
+A vertical line on the plane can be described by an equation of the form $x=a$, where $a$ is a number. Vertical lines are not functions (they fail the vertical line test), so they cannot be written as $y=f(x)$.
+All other types of lines are functions.
+
+To write a symbolic representation of a line which is a function, we need to know its slope. The slope tells us whether a line is increasing or decreasing, and how quickly. If we have two points on the line, $(x_1,y_1)$ and $(x_2,y_2)$, then we can use the slope formula: \[m=\frac{\text{rise}}{\text{run}}=\frac{y_2-y_1}{x_2-x_1}.\]
+
+Given the slope ($m$) and $y$-intercept ($b$) of a line, we can write its equation in slope-intercept form as \[y=mx+b.\]
+
+If we know the slope of a line and any point $(x_1,y_1)$, not necessarily the $y$-intercept, we can write an equation for the line in point-slope form: \[y=m(x-x_1)+y_1.\]
+Given an equation in point-slope form, we can algebraically simplify to get it in slope-intercept form.
+
+To graph a line from its equation, we need to plot two points then draw a line through them. If the line is in slope-intercept form, plot the $y$-intercept; if it is in point-slope form, plot the point $(x_1,y_1)$. Then to find a second point, use the slope. The slope tells us how many units up/down to go for every 1 unit right; positive means up, negative means down. If the slope is a fraction, then you can go [numerator] units up and [denominator] units over to graph the second point.
+
+Two lines are parallel when they never cross (stay the same distance apart forever). There are two conditions for lines to be parallel:
+\begin{itemize}
+    \item Both lines are vertical, or
+    \item Both lines have the same slope.
+\end{itemize}
+
+Two lines are perpendicular when they cross at a $90^\circ$ angle. There are two conditions for lines to be perpendicular:
+\begin{itemize}
+    \item One is horizontal and the other is vertical, or
+    \item The slopes multiply to $-1$. (Alternatively, the slope of one line is the negative reciprocal of the other.)
+\end{itemize}
+
+When we have two data points, we can write an equation for the line through them and use that equation to make estimations. When we make an estimate at an $x$-value between the known points, this is called interpolation. When we make an estimate about an $x$-value beyond the known points, this is called extrapolation. We need to be more careful when extrapolating than interpolating because the $x$ value we're interested in might be too far away from the known data, and be outside the range in which the line is a good model.
+
+When we have an equation with a variable, we can solve for the variable by using our allowed algebraic manipulations to get the variable we're interested in on one side, and everything else on the other. In the process of solving a linear equation, there are three possibilities:
+\begin{itemize}
+    \item Conditional equation: the equation can be manipulated into the form $x=a$ (where $a$ is a number, or is in terms of any other variables). In this case, the equation has a single solution.
+    \item Contradiction: the equation can be manipulated into the form $0=1$, or any other false statement. In this case the equation has no valid solutions.
+    \item Identity: the equation can be manipulated into the form $0=0$, or any other always true statement. In this case the equation has infinitely many solutions (every possible value for $x$ is a solution).
+\end{itemize}
+
+\newpage
+\section*{Types of questions - exam 1}
+
+Based on what we learned, these are many of the types of questions that we know how to answer:
+
+\begin{itemize}
+    \item Identify min/max/range/mode/mean/median of 1-variable data (or from dependent variable data of 2-variable data)
+    \item Find the midpoint between two points
+    \item Find the distance between two points
+    \item Find the equation of a circle...
+    \begin{itemize}
+        \item ...given the center and radius
+        \item ...given the center and a point on the circle (use distance formula)
+        \item ...given the endpoints of a diameter (use midpoint and distance formulas)
+        \item ...given the graph (find the center and a point on the circle, then use distance formula)
+    \end{itemize}
+    \item Find the center/radius of a circle...
+    \begin{itemize}
+        \item ...from standard form
+        \item ...from general form (use completing the square and our algebra rules)
+    \end{itemize}
+    \item Identify domain/range of a relation
+    \item Graph the points from a relation
+    \item Determine if a relation is a function
+    \item Given one representation of a function, represent it in a different way (ex: formula to graph)
+    \item Find the domain/range of a function from its symbolic representation (formula)
+    \item Find the domain/range of a function from its graph
+    \item Express the domain of a function in set-builder or interval notation
+    \item Evaluate a function at different $x$ values from its formula or graph
+    \item Find the slope or intercepts of a line from a graph
+    \item Find the equation of a line... 
+    \begin{itemize}
+        \item ...given the slope and $y$-intercept (slope-intercept form)
+        \item ...given the $y$-intercept and another point (solve for slope, then slope-intercept form)
+        \item ...given the slope and a point (point-slope form; can simplify to slope-intercept form afterwards)
+        \item ...given two points (find the slope, then point-slope form using either of the given points)
+        \item ...given the graph (find $y$-intercept and slope, then slope-intercept form)
+    \end{itemize}
+    \item Graph a line
+    \item Find a parallel/perpendicular line to a given line through a certain point (use parallel/perpendicular properties to find slope or that it's vertical, then point-slope)
+    \item Use given data points to make an estimation about something else (interpolate/extrapolate)
+    \item Solve a linear equation for a certain variable
+    \item Solve linear equations involving fractions
+    \item Solve equations with multiple variables for one variable in terms of the others
+    \item Identify conditional equations/contradictions/identities
+    \item Interpret data (look at the problem statement for the meaning of the variables we have, and then use these meanings to say what a certain data point or line/equation represents in this real-world context)
+\end{itemize}
+
+
+
+\end{document}
