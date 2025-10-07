@@ -1,0 +1,306 @@
+% uncomment this to compile individual section
+% \DocumentMetadata{
+%     lang=en-US,
+%     tagging=on,
+%     pdfversion=2.0,
+%     pdfstandard=ua-2,
+%     tagging-setup={math/setup=mathml-SE},
+%     colorprofiles={
+%         A = sRGB.icc, %or longer GTS_PDFA1 = sRGB.icc
+%         X = sRGB.icc,
+%         ISO_PDFE1 = sRGB.icc
+%     }
+% }
+
+\documentclass{article}
+\usepackage{notes}
+
+\begin{document}
+
+\setcounter{section}{1}
+\setcounter{subsection}{2}
+
+\subsection{Functions and Their Representations}
+
+\subsubsection{What is a function?}
+
+\begin{definition}{(Function)}{def:function}
+    A function is a process that receives inputs and produces outputs. For each input, the function must give exactly one output.
+
+    We write ``$f(x)=y$'' to mean ``on input $x$, the function $f$ returns output $y$''.
+
+    Alternatively, a function is a relation where every element of the domain corresponds to exactly one element of the range. All functions are relations, but not all relations are functions (see \ref{ex:1.2.3}).
+\end{definition} 
+
+Let's consider an example of a function. There is a relationship between distance from a lightning strike and seconds between seeing the lightning and hearing the thunder. We could have a function that takes the number of seconds between the lightning and thunder, and returns the distance in miles from the lightning strike.
+
+\begin{directions}
+    Write on board:\\
+    Example function: takes seconds between lightning and thunder, and returns distance in miles to the lightning strike.
+\end{directions}
+
+\begin{definition}{(Representations of functions)}{def:function_representations}
+    There are many ways to represent the data of a function.
+    \begin{itemize}
+        \item Verbal representation: verbally describe the computation of a function.\\ Ex: ``divide $x$ by 5''.
+        \item Numerical representation: table of values. Since these generally contain only a portion of the possible domain of the function, we call it a partial numerical representation.\\ Ex:
+            \begin{center} \tagpdfsetup{table/header-columns={1}}
+            \begin{tabular}{|c|c|c|c|c|c|} \hline
+                 $\mathbf{x}$ & $0$ & $5$ & $10$ & $15$ & $20$ \\ \hline
+                 $\mathbf{y}$ & $0$ & $1$ & $2$ & $3$ & $4$ \\ \hline
+            \end{tabular}\end{center}
+        \item Graphical representation: a plot of ordered pairs belonging to the relation.\\Ex:
+        \begin{center}\begin{tikzpicture}[alt={graph}]
+            \draw[very thick, <->] (-.2,0) -- (5.2,0) node[anchor=west] {$x$};
+            \draw[very thick, <->] (0,-.2) -- (0,1.2) node[anchor=south] {$y$};
+            \draw[<->] (-.1,-.02) -- (5.1,1.02);
+            \foreach \x in {1,...,5} {
+                \pgfmathsetmacro\y{int(\x*5)}
+                \draw (\x,.1) -- (\x,-.1) node[anchor=north] {\y};
+                \draw (.1,\x / 5) -- (-.1,\x / 5) node[anchor=east] {\tiny \x};
+            }
+        \end{tikzpicture}\end{center}
+        \item Symbolic representation: a formula telling us what to evaluate for each input.\\Ex: $f(x)=\frac{x}{5}$
+    \end{itemize}
+\end{definition}
+
+\begin{example}{(Textbook 1.3 ex 7)}{ex:1.3.7}
+    When the relative humidity is less than $100\%$, air cools at $3.6^\circ F$ for every 1000-foot increase in altitude. Let $f$ be a function that computes this change in temperature for an increase in altitude of $x$ thousand feet, with domain $0\leq x\leq 6$. Represent $f$
+    \begin{problem}
+        \item verbally
+        \item symbolically
+        \item graphically
+        \item numerically
+    \end{problem}
+\end{example}
+\begin{solution}
+    \begin{problem}
+        \item Multiply the input, $x$, by $-3.6$ to get the change in temperature, $y$.
+        \item $f(x)=-3.6x$
+        \item \,\begin{center}\begin{tikzpicture}[scale=.6,alt={graph of the function from part b}]
+            \draw[very thick,<->] (-0.2, 0) -- (6.2,0) node[anchor=west] {$x$};
+            \draw[very thick,<->] (0,.2) node[anchor=south] {$y$} -- (0,-3.2);
+            \foreach \x in {1,...,6} {
+                \draw (\x,.1) -- (\x,-.1) node[anchor=north] {$\x$};
+            }
+            \foreach \y in {3.6,7.2,...,21.6} {
+                \draw (.1,\y/-7.2) -- (-.1,\y/-7.2) node[anchor=east] {$-\y$};
+            }
+            \draw[<->] (-.1,-.05) -- (6.1,-3.05);
+        \end{tikzpicture}\end{center}
+        \item $\quad$\\ \vspace{-30pt}\begin{center}\begin{tabular}{|c|c|c|c|c|} \hline
+            Increase in altitude (ft) & 0 & 1000 & 2000 & 3000 \\ \hline
+            Change in temperature ($^\circ F$) & 0 & -3.6 & -7.2 & -10.8 \\ \hline
+        \end{tabular}\end{center}
+    \end{problem}
+\end{solution}
+% \includegraphics[width=6.5in]{Textbook_Mandatory_Examples/Exam1/1.3/1.3.7.png}
+
+\begin{example}{(Textbook 1.3 ex 3)}{ex:1.3.3}
+    The function \(f\) computes the revenue in dollars per unique user for different technology companies. This function is defined by \(f(A)=189,f(G)=24,f(Y)=8,f(F)=4\), where \(A\) is Amazon, $G$ is Google, $Y$ is Yahoo, and $F$ is Facebook.
+    \begin{problem}
+        \item Write $f$ as a set of ordered pairs.
+        \item Give the domain and range of $f$.
+        \item Interpret $f(A)=189$.
+    \end{problem}
+\end{example}
+\begin{solution}
+    \begin{problem}
+        \item From $f(x)=y$, we get the ordered pair $(x,y)$. Therefore, we have \[f=\{(A,189), (G,24), (Y,8), (F,4)\}.\]
+        \item Now that we have $f$ written as a list of ordered pairs, we can find the domain and range just like we did when working with relations.
+        \begin{align*}
+            D_f&=\{A,G,Y,F\}\\
+            R_f&=\{189,24,8,4\}
+        \end{align*}
+        \item $f$ takes a company as input and returns the revenue in dollars per unique user. Therefore, $f(A)=189$ means Amazon receives \$189 in revenue per unique visitor.
+    \end{problem}
+\end{solution}
+
+\subsubsection{Notating sets of real numbers}
+
+For functions with finite domains, we can write the entire domain as a set. However, many functions have infinite domains, so we need more sophisticated ways to describe their domains.
+
+Previously, we have notated everything as a set.
+
+\begin{definition}{(Sets)}{def:set}
+    A set is a collection of elements. We notate them surrounded by curly braces and separated by commas: $\{a,b,c\}$. The order of items within the braces does not matter; an item can only be in a set once (so repetitions do not matter).
+\end{definition}
+
+The first method we have is a refinement of the sets we were already using, and is called set builder notation.
+
+\begin{definition}{(Set-builder notation)}{def:set_builder}
+    The pattern for set builder notation is $\{x\in \text{[big set]}:\text{[conditions on $x$]}\}$. Sometimes, a pipe is used as a separator instead of a colon. If we don't specify the big set, then it typically means $x$ is a real number.
+\end{definition}
+
+\begin{example}{}{ex:set_builder}
+    \begin{itemize}
+        \item We can exclude specific values\\Ex: $\{x : x\neq 1,x\neq 2,x\neq 3\}$
+        \item We can set a minimum or maximum value\\Ex: $\{x : x<-2\}$\\\phantom{Ex: }$\{x : x\geq 7\}$
+        \item We can specify a range\\Ex: $\{x : \frac{1}{2}\leq x < 7\}$
+        \item We can combine multiple different types of condition\\Ex: $\{x : x > 0, x\neq 1\}$
+    \end{itemize}
+\end{example}
+
+The second tool we have is called interval notation. 
+
+\begin{definition}{(Interval notation)}{def:interval_notation}
+    Interval notation consists of the two endpoints of the interval written inside parentheses or square brackets, depending on whether each endpoint is included or not. A square bracket means that endpoint is included, and a parenthesis mean it is not. There are 4 possible cases:
+    \begin{itemize}
+        \item $a<x<b$ becomes $(a,b)$
+        \item $a<x\leq b$ becomes $(a,b]$
+        \item $a\leq x<b$ becomes $[a,b)$
+        \item $a\leq x\leq b$ becomes $[a,b]$
+    \end{itemize}
+    If there is no lower endpoint, we write $-\infty$ (cases where $x<b$ or $x\leq b$). If there is no upper endpoint, we write $\infty$ (whenever $a<x$ or $a\leq x$). We always use parentheses with infinity.
+\end{definition}
+
+Sometimes, we may have sets that consist of two intervals.
+
+\begin{definition}{(Union)}{def:union}
+    The union of two sets is the set which consists of all elements from either set. It is denoted $\cup$.
+
+    We can take the union of intervals, such as $(-\infty,-1)\cup[3,5]\cup(9,\infty)$.
+\end{definition}
+
+\subsubsection{Domain, range, and evaluation}
+
+\begin{definition}{(Domain)}{def:domain}
+    We think of the domain as the set of all valid inputs which make sense when plugged in. More formally, the domain of a function $f$ is the set of all real numbers for which its formula is defined. Sometimes we refer to this as the implied domain.
+\end{definition}
+\begin{example}{}{ex:domain_easy}
+    \begin{itemize}
+        \item $f(x)=x$: it makes sense to plug in any real number, so the domain is all real numbers.\\$\{x\in \R\}$ or $(-\infty,\infty)$
+        \item $g(x)=\frac{1}{x}$: we can plug in any number except for 0, so the domain is everything but 0.\\$\{x:x\neq 0\}$ or $(-\infty,0)\cup(0,\infty)$
+        \item $h(x)=\sqrt{3x}$: we can plug in any nonnegative number, so the domain is $x\geq 0$.\\$\{x:x\geq 0\}$ or $[0,\infty)$
+    \end{itemize}
+\end{example}
+
+\begin{example}{(Textbook 1.3 ex 4)}{ex:1.3.4}
+    Let $f(x)=\frac{x}{x-1}$.
+    \begin{problem}
+        \item If possible, evaluate
+            \begin{enumerate}
+                \item[(i)] $f(2)$
+                \item[(ii)] $f(1)$
+                \item[(iii)] $f(a+1)$
+            \end{enumerate}
+        \item Find the domain of $f$. Use set-builder notation.
+    \end{problem}
+\end{example}
+\begin{solution}
+    \begin{problem}
+        \item \begin{enumerate}
+            \item[(i)] We substitute in $x=2$ in the definition of $f(x)$, then simplify: \[f(2)=\frac{2}{2-1}=2.\]
+            \item[(ii)] Substitute: \[f(1)=\frac{1}{1-1}=\frac{1}{0}=text{undefined}.\] This means we cannot evaluate $f(1)$, or that $1$ is outside the domain of $f$.
+            \item[(iii)] Substitute: \[f(a+1)=\frac{a+1}{(a+1)-1}=\frac{a+1}{a}.\] This is defined for any $a\neq 0$.
+        \end{enumerate}
+        \item $f(x)$ is defined as long as the denominator is nonzero. $x-1=0$ when $x=1$, so the domain of $f$ is everything except $1$. In set-builder notation, this is $\{x:x\neq 1\}$. In interval notation, this is $(-\infty,1)\cup(1,\infty)$.
+    \end{problem}
+\end{solution}
+
+\begin{example}{(Textbook 1.3 ex 5)}{ex:1.3.5}
+    Let $g(x)=x^2-2x$. The graph of $g$ is shown below.
+    \begin{problem}
+        \item Find the domain and range of $g$. Use interval notation.
+        \item Evaluate $g(-1)$ using the definition.
+        \item Use the graph of $g$ to evaluate $g(-1)$.
+    \end{problem}
+    \begin{center}\begin{tikzpicture}[alt={graph of the function $g$}]
+        \draw[very thick,<->] (-1.1,0) -- (2.1,0) node[anchor=west] {$x$};
+        \draw[very thick,<->] (0,-1.1) -- (0,2.1) node[anchor=south] {$y$};
+        \draw[gray,thin,step=.5] (-1,-1) grid (2,2);
+        \draw[<->] plot[smooth,domain=-.6:1.6] (\x, {2*(\x)^2-2*\x});
+    \end{tikzpicture}\end{center}
+\end{example}
+\begin{solution}
+    \begin{problem}
+        \item The formula for $g(x)$ is defined for all real numbers, so the domain is $(-\infty,\infty)$. If we look at the graph, the minimum value $g$ takes is $-1$. $g$ continues to increase as $x$ goes to infinity, so the range is everything greater than or equal to $-1$; in interval notation this is $[-1,\infty)$
+        \item We substitute in $x=-1$ and simplify: \[g(-1)=(-1)^2-2(-1)=1-(-2)=3.\]
+        \item On the graph, we want to find the $y$ coordinate for the point on the graph of $g$ where $x=-1$. This point is $(-1,3)$, so we get $g(-1)=3$ from the graph.
+    \end{problem}
+\end{solution}
+
+\begin{example}{(Textbook 1.3 ex 6)}{ex:1.3.6}
+    A graph of $f(x)=\sqrt{x-2}$ is shown below.
+    \begin{problem}
+        \item Evaluate $f(1)$.
+        \item Find the domain and range of $f$. Use both set-builder and interval notation.
+    \end{problem}
+    \begin{center}\begin{tikzpicture}[scale=.5, alt={graph of $f$}]
+        \draw[very thick,->] (0,0) -- (8,0) node[anchor=west] {$x$};
+        \draw[very thick,<->] (0,-1.2) -- (0,3.2) node[anchor=south] {$y$};
+        \draw[gray,thin] (0,-1) grid (8,3);
+        \draw[->] plot[domain=2:8] (\x, {sqrt(\x-2)});
+    \end{tikzpicture}\end{center}
+\end{example}
+\begin{solution}
+    \begin{problem}
+        \item First, we evaluate $f(1)$ graphically. Find 1 on the $x$ axis, and look up/down to see where we intersect the graph. Since we don't ever intersect the graph, $f(1)$ is undefined. To evaluate $f(1)$, we substitute $x=1$ into the (symbolic) definition of $f$:
+            \[f(1)=\sqrt{1-2}=\sqrt{-1}.\]
+            Since $-1<0$, we cannot take its square root, so we again find that $f(1)$ is undefined.
+        \item The domain is every real number which it makes sense to plug into $f$. Looking at the graph, this appears to be everything greater than or equal to $2$. We can evaluate $f$ as long as $x-2\geq 0$, or $x\geq2$. In set-builder notation, this is $\{x:x\geq 2\}$. In interval notation, this is $[2,\infty)$.
+            The range is every possible output. Looking at the graph, this is all nonnegative numbers: $\{x:x\geq 0\}$ or $[0,\infty)$.
+    \end{problem}
+\end{solution}
+
+
+\subsubsection{Identifying functions}
+
+As we noticed in the definition of a function, all functions are relations but not all relations are functions. We can use this to identify which relations are functions, and which are not.
+
+\begin{example}{(Textbook 1.3 ex 8)}{ex:1.3.8}
+    Determine if each set of ordered pairs represents a function.
+    \begin{problem}
+        \item $A=\{(-2,3),(-1,2),(0,-3),(-2,4)\}$
+        \item $B=\{(1,4),(2,5),(-3,-4),(-1,7),(0,4)\}$
+    \end{problem}
+\end{example}
+\begin{solution}
+    \begin{problem}
+        \item $A$ is not a function because there is an element of the domain which corresponds to two elements of the range: $(-2,3)$ and $(-2,4)$ tell us that $-2$ in the domain corresponds to both $3$ and $4$ in the range.
+        \item $B$ is a function because each element of the domain corresponds to exactly one element of the range. There is an element of the range which corresponds to two elements of the domain, but this is allowed.
+    \end{problem}
+\end{solution}
+% \includegraphics[width=6.5in,alt={Test alt text}]{Textbook_Mandatory_Examples/Exam1/1.3/1.3.8.png}
+
+We can also determine whether a graph is a representation of a function.
+
+\begin{definition}{(Vertical line test)}{def:vertical_line_test}
+    If every vertical line intersects a graph at no more than one point, then the graph represents a function.
+\end{definition}
+
+\begin{example}{(Textbook 1.3 ex 9)}{ex:1.3.9}
+    Use the vertical line test to determine if the graphs below represent functions.
+    \begin{center}\tagpdfsetup{table/tagging=presentation}
+    \begin{tabular}{ccc}
+        \begin{tikzpicture}[scale=.5, alt={Graph of $x^2$}]
+            \draw[very thick, <->] (-3.2,0) -- (3.2,0) node[anchor=west] {$x$};
+            \draw[very thick, <->] (0,-.2) node[anchor=north] {$y$} -- (0,5.2);
+            \draw[<->, blue] plot[smooth, domain=-3:3] (\x,0.5*\x*\x);
+        \end{tikzpicture}
+        & $\qquad$ &
+        \begin{tikzpicture}[scale=.5,alt={Example of a graph which is not a function}]
+            \draw[very thick, <->] (-3.2,0) -- (3.2,0) node[anchor=west] {$x$};
+            \draw[very thick, <->] (0,-2.7) -- (0,2.7) node[anchor=south] {$y$};
+            % \draw[<->, blue] plot[smooth, variable=\y, domain=-2.5:2.5] (\y*(\y-1)*(\y+1)*3,\y);
+            \draw[<->, domain=-2.35:2.35, smooth, variable=\y, red]  plot ({-.8*\y*(\y-2)*(\y+2)}, {\y});
+        \end{tikzpicture}
+    \end{tabular}\end{center}
+\end{example}
+\begin{solution}
+    \begin{problem}
+        \item Every vertical line we can draw on the first graph intersects at only 1 point, so this passes the vertical line test and is a function.
+        \item The line $x=0$ intersects the graph at 3 points, so this fails the vertical line test and is not a function.
+    \end{problem}
+\end{solution}
+% \includegraphics[width=6.5in]{Textbook_Mandatory_Examples/Exam1/1.3/1.3.9.png}
+
+Sometimes, equations define functions.
+
+\begin{example}{}{ex:function_from_equation}
+    Suppose we have the equation $x+y=1$. By subtracting $x$ from both sides, we get $y=1-x$, which defines an equation $f(x)=1-x$.
+\end{example}
+
+However, the equation must pass the vertical line test. This means that some equations, like the equation for a circle we saw last section, do {\it not} define functions.
+
+\end{document}

@@ -2,5 +2,5 @@
 *.log
 *.synctex.gz
 *.out
-*.sty
-*.cls
+*.cut
+/Textbook_Mandatory_Examples
