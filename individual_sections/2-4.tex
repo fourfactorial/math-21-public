@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage{notes}
+
+\begin{document}
+
+\setcounter{section}{2}
+\setcounter{subsection}{3}
+
+\subsection{Modeling with linear functions}
+
+In science, we often talk about dependent and independent variables. In an experiment, we change the value of an independent variable and then observe the effect on the dependent variable.
+A function can be used to represent this sort of relationship. The independent variable is our input variable $x$, and the dependent variable is the resulting value of the function, $f(x)$.
+
+Sometimes, the dependent variable will change at a constant rate with respect to the independent variable. Then we can model these situations with a line.
+
+\includegraphics[width=6.5in]{Textbook_Mandatory_Examples/Exam2/2.4/2.4.1.png}
+
+Domain is only $[0,3]$ or $\{0,1,2,3\}$ since prediction only good through 2018, and we generally don't think about fractional years.
+
+Domain is only $[0,5]$ because we can't keep slowing down after stopping*.
+
+\includegraphics[width=6.5in]{Textbook_Mandatory_Examples/Exam2/2.4/2.4.3.png}
+
+One area where linear equations as models regularly come up is physics.
+
+\begin{thm}{(Hooke's law)}{thm:hooke}
+    Hooke's law is a theorem of physics which tells us that the distance a spring stretches is proportional to the force applied to the spring. The presentation our book uses is \[F=kx\] where $F$ is the weight (in pounds) of an object hung from the spring, $k$ is the spring constant for that spring, and $x$ is the distance (in inches) that the spring stretches.
+\end{thm}
+
+\includegraphics[width=6.5in]{Textbook_Mandatory_Examples/Exam2/2.4/2.4.6.png}
+
+Sometimes, there isn't a single formula that works to describe all of a situation. In this case, we can combine multiple formulas which describe parts of the data using a piecewise function.
+
+\begin{definition}{(Piecewise function)}{def:piecewise}
+    A piecewise function combines multiple formulas that describe what happens in different parts of the domain. We write piecewise functions like \[f(x)=\begin{cases}\text{formula 1}&\text{domain 1}\\\text{formula 2}&\text{domain 2}\\\quad\;\vdots&\;\quad\vdots\end{cases}\]
+\end{definition}
+
+\begin{example}{(Floor function)}{ex:floor_fct}
+    One example of a piecewise function is the floor function (your book calls this the greatest integer function). This function takes in a number and returns the greatest integer less than or equal to that number. In essence, it ``rounds down'' to the nearest whole number. We can write this like \[\lfloor x\rfloor=\bigl\{\;n\qquad n\leq x<n+1 \text{ and $n$ is an integer}\bigr.\] This function formalizes the fact that sometimes we have things which we can't have a fractional quantity of, like students in a class or days in a month.
+\end{example}
+
+\includegraphics[width=6.5in]{Textbook_Mandatory_Examples/Exam2/2.4/2.4.5.png}
+
+\end{document}

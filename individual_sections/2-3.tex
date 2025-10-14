@@ -1,0 +1,170 @@
+\documentclass{article}
+\usepackage[print]{notes}
+
+\begin{document}
+
+\setcounter{section}{2}
+\setcounter{subsection}{2}
+
+\subsection{Linear Inequalities}
+
+Previously, we have worked with linear equations. Now we will look at linear inequalities.
+
+\begin{definition}{(Inequality)}{def:inequality}
+    Recall than an equation is two quantities related with $=$.
+
+    An inequality is two quantities related by one of:
+    \begin{itemize}
+        \item $<$ means left is strictly less than right side
+        \item $\leq$ means left is less than or equal to right
+        \item $>$ means left is strictly greater than right
+        \item $\geq$ means left is greater than or equal to right
+    \end{itemize}
+\end{definition}
+
+We are allowed to do certain things when working with inequalities:
+
+\begin{process}{Symbolically manipulating inequalities}{process:inequalities}
+    We are allowed to do certain things when working with inequalities:
+    \begin{itemize}
+        \item Simplify the expression on either side of the inequality sign\\Ex: if $3(x-1)\leq 5$, we can distribute to simply the left: $3x-1\leq 5$.
+        \item Add or subtract something from both sides\\Ex: if $x-5>17$, we can add 5 to both sides to get $x>17+5$.
+        \item Multiply or divide both sides by a positive number\\Ex: if $2x<16$, we can divide both sides by 2 to get $x<8$.
+        \item Multiply or divide both sides by a negative number, {\bf and flip the sign}\\Ex: if $-\frac{1}{3}x\leq 1$, then we can multiply both sides by $-3$ and flip the sign to get $x\geq -3$.\\We have to flip the sign in order to keep the statement true. For example, $-1>-5$ but if we multiply both sides by $-1$ and don't flip the sign we get $1>5$ which is false.
+        \item Replace something with something else that is equal to it\\Ex: if we have $x \geq a$ and know $a=3$, we can replace $a$ with $3$ to get $x\geq3$.
+    \end{itemize}
+\end{process}
+
+\begin{remark}{}{rmk:switch_sides_inequality}
+    We can always rewrite an inequality to use $<$ instead of $>$ or $\leq$ instead of $\geq$ by switching the sides.
+\end{remark}
+
+\begin{definition}{(Bounds)}{def:bounds}
+    \begin{itemize}
+        \item If $a<x$ or $a\leq x$, we say that $a$ is a lower bound for $x$
+        \item If $x<b$ or $x\leq b$, we say that $b$ is an upper bound for $x$
+    \end{itemize}
+\end{definition}
+
+\begin{definition}{(Linear inequality)}{def:linear_inequality}
+    A linear inequality is an inequality that can be rearranged to look like $ax+b>0$ or $ax+b\geq 0$.
+
+    Another way to think about this is that it's a statement like we had for linear equations, but with an inequality sign instead of an equals sign.
+\end{definition}
+
+\begin{definition}{(Linear inequality)}{def:linear_inequality}
+    A linear inequality is an inequality that can be rearranged to look like $ax+b>0$ or $ax+b\geq 0$.
+
+    Another way to think about this is that it's a statement like we had for linear equations, but with an inequality sign instead of an equals sign.
+\end{definition}
+
+\includegraphics[width=6.5in]{Textbook_Mandatory_Examples/Exam2/2.3/2.3.1.png}
+
+\begin{definition}{}{def:three_part_inequality}
+    A three-part inequality is one with both an upper bound and lower bound on a quantity. 
+
+    Alternatively, we can think of a three-part inequality as having two inequality signs which must ``point'' the same way.
+\end{definition}
+
+\begin{example}{}{ex:three_part_inequalities}
+    Determine which of the following are valid 3-part inequalities:
+    \begin{problem}
+        \item $5 > 3 \geq x$
+        \item $2 < x \geq 4$
+        \item $a < x < b$
+    \end{problem}
+\end{example}
+\begin{solution}
+    \begin{problem}
+        \item This is a valid three-part inequality because the middle term has one lower bound and one upper bound. We could write it in one of the four forms by reversing it: $x\leq 3 < 5$.
+        \item This is not a valid three-part inequality because the middle term has two lower bounds and no upper bound.
+        \item This is a valid three-part inequality.
+    \end{problem}
+\end{solution}
+
+\begin{remark}{}{rmk:inequality_from_interval}
+    Previously, we've looked at interval notation. We learned how to write an interval from a three part inequality where the middle term is $x$, or from a two-part inequality where one side is $x$. Similarly, an interval gives us an inequality.
+\end{remark}
+
+\includegraphics[width=6.5in]{Textbook_Mandatory_Examples/Exam2/2.3/2.3.6.png}
+
+Just like we can solve linear equations graphically, we can also solve linear inequalities graphically. To do this, we treat each side of the inequality as a linear function and graph them.
+
+\includegraphics[width=6.5in]{Textbook_Mandatory_Examples/Exam2/2.3/2.3.2.png}
+
+We can also do word problems with linear inequalities. This is often useful when we care about a range of results, not just one specific value.
+
+\includegraphics[width=6.5in]{Textbook_Mandatory_Examples/Exam2/2.3/2.3.7.png}
+
+\setcounter{section}{2}
+\setcounter{subsection}{3}
+\setcounter{subsubsection}{4}
+
+\subsubsection{Inequality word problems}
+
+\markright{2.3 (Interlude) Modeling with linear inequalities}
+
+\begin{process}{Solving (in)equality word problems}{}
+    \begin{enumerate}
+        \item Write a (linear) equation to model the situation
+        \item Determine the inequality that gives us the desired solution, using your equation
+        \item Solve the inequality
+    \end{enumerate}
+\end{process}
+
+\begin{example}{}{}
+    A car starts with 12 gallons of gas. Driving 25 miles takes 1 gallon of gas. How far can it drive and still have at least 6 gallons of gas left?
+\end{example}
+
+\begin{solution}
+    \begin{enumerate}
+        \item Equation modeling the situation:
+        
+        The independent variable here ($x$) is number of miles driven, and the dependent variable ($y$) is gallons of gas the car has left. We want to write a function that tells us how many gallons of gas the car has left after driving $x$ miles.
+
+        The initial value is $f(0)=12$ gallons of gas.
+
+        The rate of change/slope should be change in $y$ over change in $x$. We know that driving 25 miles ($\Delta x=25$) takes 1 gallon of gas ($\Delta y=-1$; this is negative since the car has 1 gallon less of gas afterwards). Thus, the rate of change is $\frac{-1}{25}$.
+
+        Putting this together, we get $f(x)=-\frac{1}{25}x+12$.
+        \item Inequality for what we're solving for:
+        
+        We want the car to have at least 6 gallons of gas, so $f(x)\geq 6$. Plugging in our formula for $f(x)$, this means $-\frac{1}{25}x+12\geq 6$.
+
+        \item Solve:
+        \begin{align*}
+            -\frac{1}{25}x+12&\geq 6\\
+            -\frac{1}{25}x&\geq -6\\
+            x\;&\boxed{\leq}-6\cdot -25\\
+            x&\leq 150.
+        \end{align*}
+        Therefore, the car can drive up to 150 miles and still have at least 6 gallons of gas.
+    \end{enumerate}
+\end{solution}
+
+\begin{example}{}{}
+    A biker is 50 miles from home. She bikes towards home 15 miles per hour. When will she be at most 10 miles from home? 
+\end{example}
+
+\begin{solution}
+    \begin{enumerate}
+        \item Independent variable is time (this is always a good guess for situations involving position/speed!)
+        
+        Dependent variable is distance from home.
+
+        Initial value is initial distance from home, $50$ (miles).
+
+        Rate of change is $-15$ since the distance between the biker and her home is decreasing at 15 miles per hour.
+
+        All together, this gives us $f(x)=-15x+50$.
+        \item We want her to be at most 10 miles from home; $f(x)\leq 10$. Plugging in our formula for $f(x)$ gives us $-15x+50\leq 10$.
+        \item \begin{align*}
+            -15x+50&\leq 10\\
+            -15x&\leq-40\\
+            x&\geq\frac{-40}{-15}=\frac{8}{3}
+        \end{align*}
+        So, at any time after 2 hours and 40 minutes, she will be at most 10 miles from home.
+    \end{enumerate}
+\end{solution}
+
+\end{document}
